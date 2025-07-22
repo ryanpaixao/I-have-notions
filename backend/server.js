@@ -4,7 +4,7 @@ const { Client } = require('@notionhq/client');
 const cors = require('cors');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT;
 app.use(cors());
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
@@ -13,6 +13,7 @@ app.get('/notion-data', async (req, res) => {
   try {
     const response = await notion.databases.query({
       database_id: process.env.DATABASE_ID,
+      page_size: 100,
     });
 
     const simplified = response.results.map(page => {
