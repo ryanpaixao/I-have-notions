@@ -1,35 +1,21 @@
-require('dotenv').config();
-const express = require('express');
-const { Client } = require('@notionhq/client');
-const cors = require('cors');
+import cors from 'cors';
+import express from 'express';
+
+import notionDataRoutes from './routes/notionDataRoutes.js';
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
+
+// Middleware
 app.use(cors());
 
-const notion = new Client({ auth: process.env.NOTION_KEY });
-
-app.get('/notion-data', async (req, res) => {
-  try {
-    const response = await notion.databases.query({
-      database_id: process.env.DATABASE_ID,
-      page_size: 100,
-    });
-
-    const simplified = response.results.map(page => {
-      return {
-        id: page.id,
-        title: page.properties.Name.title[0]?.plain_text,
-        created: page.created_time
-      };
-    });
-
-    res.status(200).json(simplified)
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'API error' });
-  }
+// Test route
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
 });
+
+// Routes
+app.use('/api/notion', notionDataRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
