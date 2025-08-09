@@ -12,7 +12,9 @@ import NotionDataViewer from './views/NotionDataViewer.vue';
   </header>
 </template>
 
-<style scoped>
+<style>
+@import 'vuetify/styles/main.css';
+
 header {
   line-height: 1.5;
   max-height: 100vh;
