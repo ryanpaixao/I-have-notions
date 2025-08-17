@@ -4,14 +4,15 @@ import axios from 'axios';
 
 const notionData = ref([]);
 const loading = ref(true);
-const databaseId = ref(import.meta.env.VITE_DATABASE_ID); // TODO: Replace me!!)
+const databaseId = ref(import.meta.env.VITE_DATABASE_ID).value; // TODO: Replace me!!)
+const baseUri = ref(import.meta.env.VITE_BASE_URI).value;
+const port = ref(import.meta.env.VITE_PORT).value;
 
 const formatDate = (dateString) => new Date(dateString).toLocaleDateString();
 
 onMounted(async () => {
-  console.log('updated!!');
   try {
-    const response = await axios.get(`http://localhost:5000/api/notion/query-data/${databaseId.value}`);
+    const response = await axios.get(`${baseUri}:${port}/api/notion/query-data/${databaseId}`);
     notionData.value = response.data;
   } catch (error) {
     console.error('Error fetching Notion data:', error);
