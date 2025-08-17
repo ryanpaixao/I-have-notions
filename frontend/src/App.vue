@@ -1,5 +1,5 @@
 <script setup>
-import NotionDataViewer from './views/NotionDataViewer.vue';
+import NotionDataViewer from './views/NotionParentView.vue';
 </script>
 
 <template>

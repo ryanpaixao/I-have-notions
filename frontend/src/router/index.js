@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import NotionDataViewer from '@/views/NotionDataViewer.vue'
+import NotionDataViewer from '@/views/NotionParentView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
