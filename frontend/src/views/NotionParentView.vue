@@ -1,23 +1,24 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
 import axios from 'axios';
 
 const notionData = ref([]);
-const loading = ref(true);
-const databaseId = ref(import.meta.env.VITE_DATABASE_ID).value; // TODO: Replace me!!)
-const baseUri = ref(import.meta.env.VITE_BASE_URI).value;
-const port = ref(import.meta.env.VITE_PORT).value;
+const isLoading = ref(true);
+const databaseId = ref(import.meta.env.VITE_DATABASE_ID); // TODO: Replace me!!)
+const baseUri = ref(import.meta.env.VITE_BASE_URI);
+const port = ref(import.meta.env.VITE_PORT);
 
 const formatDate = (dateString) => new Date(dateString).toLocaleDateString();
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri}:${port}/api/notion/query-data/${databaseId}`);
+    const response = await axios.get(`${baseUri.value}:${port.value}/api/notion/query-data/${databaseId.value}`);
     notionData.value = response.data;
   } catch (error) {
-    console.error('Error fetching Notion data:', error);
+    console.error('Error fetching Notion query data:', error);
   } finally {
-    loading.value = false;
+    isLoading.value = false;
   }
 });
 </script>
@@ -25,11 +26,13 @@ onMounted(async () => {
 <template>
   <div class="notion-container">
     <h1>Notion Content Viewer</h1>
-    <div v-if="loading">Loading data from Notion...</div>
+    <div v-if="isLoading.value">Loading data from Notion...</div>
     <div v-else>
       <div v-for="page in notionData" :key="page.id" class="page-card">
         <h2>
-          <a :href="page.url || ''">{{ page.title || 'Untitled' }}</a>
+          <RouterLink :to="`/block/${page.id}`">
+            {{ page.title || 'Untitled' }}
+          </RouterLink>
         </h2>
         <p>Created: {{ formatDate(page.created) }}</p>
       </div>
