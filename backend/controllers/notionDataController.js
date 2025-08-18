@@ -25,9 +25,27 @@ export const getNotionData = async (req, res) => {
 
     res.status(200).json(simplified)
   } catch (error) {
-    console.error(error);
+    console.error('apiError ==>> ', error);
     res.status(500).json({ apiError: error });
   }
+};
+
+const formatBlockChildrenData = (data) => {
+  const formatedData = [];
+
+  if (Array.isArray(data)) {
+    data.forEach((textObj) => {
+      const richText = textObj?.paragraph?.rich_text
+
+      if (Array.isArray(richText)) {
+        richText.forEach((textObj) => {
+          textObj?.plain_text && formatedData.push(textObj.plain_text);
+        });
+      }
+    });
+  }
+
+  return formatedData;
 };
 
 // List Block Children of Page
@@ -36,9 +54,10 @@ export const getBlockChildren = async (req, res) => {
     const response = await notion.blocks.children.list({
       block_id: req.params.block_id,
     });
-    res.status(200).json(response);
+    const formatedData = formatBlockChildrenData(response.results);
+    res.status(200).json(formatedData);
   } catch (error) {
-    console.error(error);
+    console.error('apiError ==>> ', error);
     res.status(500).json({ apiError: error });
   };
 };
@@ -51,7 +70,7 @@ export const getUsersList = async (req, res) => {
 
     res.status(200).json(results);
   } catch (error) {
-    console.error('error ==>> ', error);
+    console.error('apiError ==>> ', error);
     res.status(500).json({ apiError: error });
   };
 };
