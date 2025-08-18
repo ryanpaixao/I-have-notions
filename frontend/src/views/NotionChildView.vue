@@ -3,6 +3,9 @@ import { ref, onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
+// Components
+import NotionBlock from '@/components/NotionBlock.vue';
+
 const route = useRoute();
 const blockId = route.params.block_id;
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
@@ -30,7 +33,7 @@ onMounted(async () => {
 <template>
   <section>
     <div class="">
-      <h2 class="">
+      <h2 class="text-center mb-7">
         {{ pageTitle }}
       </h2>
       <div v-if="state.isLoading" class="text-center">
@@ -38,11 +41,7 @@ onMounted(async () => {
       </div>
       <div v-else class="">
         <div v-for="(block, index) in state.blocks" :key="index">
-          <div class="">
-            <p>
-              {{ block }}
-            </p>
-          </div>
+          <NotionBlock :block="block" />
         </div>
       </div>
     </div>
