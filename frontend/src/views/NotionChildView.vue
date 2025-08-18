@@ -29,14 +29,14 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="container-xl lg:container m-auto">
-      <h2 class="text-3xl font-bold text-center">
+    <div class="">
+      <h2 class="">
         {{ pageTitle }}
       </h2>
       <div v-if="state.isLoading" class="text-center">
         ... Loading
       </div>
-      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div v-else class="">
         <div v-for="(block, index) in state.blocks" :key="index">
           <div class="">
             <p>
