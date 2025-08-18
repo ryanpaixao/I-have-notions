@@ -4,7 +4,7 @@ import { getNotionData, getBlockChildren, getUsersList } from '../controllers/no
 const router = express.Router();
 
 router.get('/query-data/:database_id', getNotionData);
+router.get('/block/:block_id', getBlockChildren);
 router.get('/users-list', getUsersList);
-router.get('/block-children-list/:block_id', getBlockChildren);
 
 export default router;
