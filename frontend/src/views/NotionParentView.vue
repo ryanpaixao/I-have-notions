@@ -20,7 +20,7 @@ const state = reactive({
 onMounted(async () => {
   try {
     const response = await axios.get(`${baseUri.value}:${port.value}/api/notion/query-data/${databaseId.value}`);
-    state.notionData = response.data;
+    state.notionData = response.data.sort((a, b) => a.title >= b.title);
   } catch (error) {
     console.error('Error fetching Notion query data:', error);
     toast("Problem fetching data :(");
@@ -32,7 +32,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="notion-container">
+    <div class="notion-container mb-14">
       <h1 class="text-center mb-7">Notion Content Viewer</h1>
       <div v-if="state.isLoading">
         <PulseLoader />

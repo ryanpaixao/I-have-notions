@@ -37,7 +37,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="">
+    <div class="mb-14">
       <h2 class="text-center mb-7">
         {{ state.pageTitle }}
       </h2>
