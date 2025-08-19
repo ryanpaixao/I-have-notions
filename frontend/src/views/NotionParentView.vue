@@ -1,46 +1,54 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import axios from 'axios';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-const notionData = ref([]);
-const isLoading = ref(true);
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID); // TODO: Replace me!!)
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
 const port = ref(import.meta.env.VITE_PORT);
 
 const formatDate = (dateString) => new Date(dateString).toLocaleDateString();
 
+const state = reactive({
+  notionData: [],
+  isLoading: true
+});
+
 onMounted(async () => {
   try {
     const response = await axios.get(`${baseUri.value}:${port.value}/api/notion/query-data/${databaseId.value}`);
-    notionData.value = response.data;
+    state.notionData = response.data;
   } catch (error) {
     console.error('Error fetching Notion query data:', error);
     toast("Problem fetching data :(");
   } finally {
-    isLoading.value = false;
+    state.isLoading = false;
   }
 });
 </script>
 
 <template>
-  <div class="notion-container">
-    <h1>Notion Content Viewer</h1>
-    <div v-if="isLoading.value">Loading data from Notion...</div>
-    <div v-else>
-      <div v-for="page in notionData" :key="page.id" class="page-card">
-        <h2>
-          <RouterLink :to="`/block/${page.id}`">
-            {{ page.title || 'Untitled' }}
-          </RouterLink>
-        </h2>
-        <p>Created: {{ formatDate(page.created) }}</p>
+  <section>
+    <div class="notion-container">
+      <h1 class="text-center mb-7">Notion Content Viewer</h1>
+      <div v-if="state.isLoading">
+        <PulseLoader />
+      </div>
+      <div v-else>
+        <div v-for="page in state.notionData" :key="page.id" class="page-card">
+          <h2>
+            <RouterLink :to="`/block/${page.id}`">
+              {{ page.title || 'Untitled' }}
+            </RouterLink>
+          </h2>
+          <p>Created: {{ formatDate(page.created) }}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

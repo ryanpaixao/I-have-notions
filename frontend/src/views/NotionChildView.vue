@@ -2,6 +2,7 @@
 import { ref, onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
@@ -41,7 +42,7 @@ onMounted(async () => {
         {{ state.pageTitle }}
       </h2>
       <div v-if="state.isLoading" class="text-center">
-        ... Loading
+        <PulseLoader />
       </div>
       <div v-else class="">
         <div v-for="(block, index) in state.blocks" :key="index">
