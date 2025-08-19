@@ -11,9 +11,8 @@ const blockId = route.params.block_id;
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
 const port = ref(import.meta.env.VITE_PORT);
 
-const pageTitle = "Replace me!!"; // TODO: Replace w/actual page title
-
 const state = reactive({
+  pageTitle: "",
   blocks: [],
   isLoading: true
 });
@@ -21,7 +20,9 @@ const state = reactive({
 onMounted(async () => {
   try {
     const response = await axios.get(`${baseUri.value}:${port.value}/api/notion/block/${blockId}`);
-    state.blocks = response.data;
+
+    state.pageTitle = response.data?.title;
+    state.blocks = response.data?.blocks;
   } catch (error) {
     console.error('Error fetching Notion block data:', error);
   } finally {
@@ -34,7 +35,7 @@ onMounted(async () => {
   <section>
     <div class="">
       <h2 class="text-center mb-7">
-        {{ pageTitle }}
+        {{ state.pageTitle }}
       </h2>
       <div v-if="state.isLoading" class="text-center">
         ... Loading
