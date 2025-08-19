@@ -2,6 +2,8 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import axios from 'axios';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const notionData = ref([]);
 const isLoading = ref(true);
@@ -17,6 +19,7 @@ onMounted(async () => {
     notionData.value = response.data;
   } catch (error) {
     console.error('Error fetching Notion query data:', error);
+    toast("Problem fetching data :(");
   } finally {
     isLoading.value = false;
   }

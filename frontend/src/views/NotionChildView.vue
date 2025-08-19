@@ -2,6 +2,8 @@
 import { ref, onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 // Components
 import NotionBlock from '@/components/NotionBlock.vue';
@@ -25,6 +27,7 @@ onMounted(async () => {
     state.blocks = response.data?.blocks;
   } catch (error) {
     console.error('Error fetching Notion block data:', error);
+    toast("Problem fetching data :(");
   } finally {
     state.isLoading = false;
   }
