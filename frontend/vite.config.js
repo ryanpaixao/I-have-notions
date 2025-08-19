@@ -32,14 +32,8 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('vuetify/lib')) {
-              if (id.includes('components')) {
-                return 'vendor-vuetify-components';
-              } else if (id.includes('composables')) {
-                return 'vendor-vuetify-composables';
-              }
-
-              return 'vendor-vuetify-other';
+            if (id.includes('vuetify')) {
+              return 'vendor-vuetify';
             }
             if (id.includes('@vue')) {
               return 'vendor-vue';
