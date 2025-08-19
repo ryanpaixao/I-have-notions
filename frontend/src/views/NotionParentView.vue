@@ -8,7 +8,6 @@ import 'vue3-toastify/dist/index.css';
 
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID); // TODO: Replace me!!)
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
-const port = ref(import.meta.env.VITE_PORT);
 
 const formatDate = (dateString) => new Date(dateString).toLocaleDateString();
 
@@ -19,7 +18,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}:${port.value}/api/notion/query-data/${databaseId.value}`);
+    const response = await axios.get(`${baseUri.value}/api/notion/query-data/${databaseId.value}`);
     state.notionData = response.data.sort((a, b) => a.title >= b.title);
   } catch (error) {
     console.error('Error fetching Notion query data:', error);

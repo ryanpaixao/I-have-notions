@@ -12,7 +12,6 @@ import NotionBlock from '@/components/NotionBlock.vue';
 const route = useRoute();
 const blockId = route.params.block_id;
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
-const port = ref(import.meta.env.VITE_PORT);
 
 const state = reactive({
   pageTitle: "",
@@ -22,7 +21,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}:${port.value}/api/notion/block/${blockId}`);
+    const response = await axios.get(`${baseUri.value}/api/notion/block/${blockId}`);
 
     state.pageTitle = response.data?.title;
     state.blocks = response.data?.blocks;
