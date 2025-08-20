@@ -1,18 +1,17 @@
-import dotenv from 'dotenv';
-import { Client } from '@notionhq/client';
+import notion from './notion.js';
+import { formatBlockChildrenData, databaseReqParams } from '../utils/index.js';
 
-dotenv.config();
-
-const notion = new Client({ auth: process.env.NOTION_KEY });
 const Name = 'Nome'; // TODO: Use Localization?
 
 // Get Query Notion Database
 export const getNotionData = async (req, res) => {
   try {
-    const response = await notion.databases.query({
+    const reqPayload = {
       database_id: req.params.database_id,
       page_size: 100,
-    });
+      ...databaseReqParams(req.query)
+    };
+    const response = await notion.databases.query(reqPayload);
 
     // const simplified = response.results;
     const simplified = response.results.map(page => {
@@ -28,24 +27,6 @@ export const getNotionData = async (req, res) => {
     console.error('apiError ==>> ', error);
     res.status(500).json({ apiError: error });
   }
-};
-
-const formatBlockChildrenData = (data) => {
-  const formatedData = [];
-
-  if (Array.isArray(data)) {
-    data.forEach((textObj) => {
-      const richText = textObj?.paragraph?.rich_text
-
-      if (Array.isArray(richText)) {
-        richText.forEach((textObj) => {
-          textObj?.plain_text && formatedData.push(textObj.plain_text);
-        });
-      }
-    });
-  }
-
-  return formatedData;
 };
 
 // List Block Children of Page
