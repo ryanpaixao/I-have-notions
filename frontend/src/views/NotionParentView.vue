@@ -18,7 +18,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}/api/notion/query-data/${databaseId.value}`);
+    const response = await axios.get(`${baseUri.value}/api/data/query-data/${databaseId.value}`);
     state.notionData = response.data.sort((a, b) => a.title >= b.title);
   } catch (error) {
     console.error('Error fetching Notion query data:', error);

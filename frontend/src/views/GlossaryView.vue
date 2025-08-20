@@ -20,7 +20,7 @@ const query = "Hierarquia=Categoria%20de%20Subtipos";
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}/api/notion/query-data/${databaseId.value}?${query}`);
+    const response = await axios.get(`${baseUri.value}/api/data/query-data/${databaseId.value}?${query}`);
     state.notionData = response.data.sort((a, b) => a.title >= b.title);
   } catch (error) {
     console.error('Error fetching Notion query data:', error);

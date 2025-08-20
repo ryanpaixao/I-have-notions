@@ -21,7 +21,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}/api/notion/block/${blockId}`);
+    const response = await axios.get(`${baseUri.value}/api/block/${blockId}`);
 
     state.pageTitle = response.data?.title;
     state.blocks = response.data?.blocks;
