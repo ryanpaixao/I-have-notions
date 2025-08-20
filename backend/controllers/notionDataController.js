@@ -1,5 +1,5 @@
 import notion from './notion.js';
-import { databaseReqParams } from '../utils/index.js';
+import { databaseReqParams } from '../utils/database.js';
 
 const Name = 'Nome'; // TODO: Use Localization?
 

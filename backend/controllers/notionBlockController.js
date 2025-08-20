@@ -1,5 +1,5 @@
 import notion from './notion.js';
-import { formatBlockChildrenData } from '../utils/index.js';
+import { formatBlockChildrenData } from '../utils/block.js';
 
 // List Block Children of Page
 export const getBlockChildren = async (req, res) => {
