@@ -4,5 +4,6 @@ import { getBlockChildren } from '../controllers/notionBlockController.js';
 const router = express.Router();
 
 router.get('/:block_id', getBlockChildren);
+router.get('/type/:block_id', getBlockChildren);
 
 export default router;

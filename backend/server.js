@@ -3,6 +3,7 @@ import express from 'express';
 
 import notionDataRoutes from './routes/notionDataRoutes.js';
 import notionBlockRoutes from './routes/notionBlockRoutes.js';
+import notionPageRoutes from './routes/notionPageRoutes.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use('/api/data', notionDataRoutes);
 app.use('/api/block', notionBlockRoutes);
+app.use('/api/page', notionPageRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
