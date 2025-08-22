@@ -3,22 +3,22 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <v-app width="100%">
-    <v-container width="100%">
-      <v-row class="justify-center">
-        <header>
-          <img alt="Notion logo" class="logo" src="@/assets/notion_icon.svg" width="125" height="125" />
-        </header>
-      </v-row>
-      <v-row>
-        <section>
-          <div class="">
-            <RouterView />
-          </div>
-        </section>
-      </v-row>
-    </v-container>
-  </v-app>
+  <VApp class="w-100" full-width>
+    <VContainer fluid>
+      <VRow class="justify-center">
+        <VCol cols="12" class="justify-center">
+          <header>
+            <img alt="Notion logo" class="logo" src="@/assets/notion_icon.svg" width="125" height="125" />
+          </header>
+        </VCol>
+      </VRow>
+      <VRow class="w-100" align="stretch">
+        <VCol cols="12">
+          <RouterView />
+        </VCol>
+      </VRow>
+    </VContainer>
+  </VApp>
 </template>
 
 <style></style>
