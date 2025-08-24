@@ -21,4 +21,6 @@ import { RouterView } from 'vue-router';
   </VApp>
 </template>
 
-<style></style>
+<style>
+@import 'vuetify/styles/main.css';
+</style>

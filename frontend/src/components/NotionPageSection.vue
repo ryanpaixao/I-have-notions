@@ -1,6 +1,5 @@
 <script setup>
 import { defineProps } from 'vue';
-// import { VExpansionPanels, VE } from 'vuetify/lib/components';
 
 const props = defineProps({
   section: Array
