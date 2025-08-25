@@ -1,24 +1,26 @@
 <script setup>
 import { RouterView } from 'vue-router';
+import BottomNav from './components/BottomNav.vue';
 </script>
 
 <template>
-  <VApp class="w-100" full-width>
-    <VContainer fluid>
-      <VRow class="justify-center">
-        <VCol cols="12" class="justify-center">
+  <v-app>
+    <v-main>
+      <v-row class="justify-center">
+        <v-col cols="12" class="justify-center">
           <header>
             <img alt="Notion logo" class="logo" src="@/assets/notion_icon.svg" width="125" height="125" />
           </header>
-        </VCol>
-      </VRow>
-      <VRow class="w-100" align="stretch">
-        <VCol cols="12">
+        </v-col>
+      </v-row>
+      <v-row class="w-100" align="stretch">
+        <v-col cols="12">
           <RouterView />
-        </VCol>
-      </VRow>
-    </VContainer>
-  </VApp>
+        </v-col>
+      </v-row>
+    </v-main>
+    <BottomNav />
+  </v-app>
 </template>
 
 <style>
