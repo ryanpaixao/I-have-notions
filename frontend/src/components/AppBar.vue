@@ -35,7 +35,9 @@ watch(group, () => {
       <v-app-bar-nav-icon icon="mdi-menu" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </template>
     <VAppBarTitle>
-      Eneagrama
+      <v-btn variant="plain" block to="/" class="justify-start">
+        <span>Eneagrama</span>
+      </v-btn>
     </VAppBarTitle>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer" :location="$vuetify.display.mobile ? 'top' : undefined" temporary>
@@ -43,6 +45,11 @@ watch(group, () => {
       <v-list-item>
         <v-btn variant="text" block to="/tipos" class="justify-start">
           <span>Tipos</span>
+        </v-btn>
+      </v-list-item>
+      <v-list-item>
+        <v-btn variant="text" block to="/subtipos" class="justify-start">
+          <span>Subtipos</span>
         </v-btn>
       </v-list-item>
       <v-list-item>

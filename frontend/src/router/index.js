@@ -5,6 +5,9 @@ import GlossaryParentView from '@/views/GlossaryParentView.vue';
 import GlossaryChildView from '@/views/GlossaryChildView.vue'
 import TypeParentView from '@/views/TypeParentView.vue';
 import TypeChildView from '@/views/TypeChildView.vue';
+import SubtypeParentView from '@/views/SubtypeParentView.vue';
+
+import NotFoundView from '@/views/NotFoundView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +26,11 @@ const router = createRouter({
       path: '/tipos',
       name: 'typeParent',
       component: TypeParentView,
+    },
+    {
+      path: '/subtipos',
+      name: 'subtypeParent',
+      component: SubtypeParentView,
     },
     {
       path: '/block/:block_id',
