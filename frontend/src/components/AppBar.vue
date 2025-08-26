@@ -41,6 +41,11 @@ watch(group, () => {
           <span>Glossario</span>
         </v-btn>
       </v-list-item>
+      <v-list-item>
+        <v-btn variant="text" block to="/asa" class="justify-start">
+          <span>Asa</span>
+        </v-btn>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>

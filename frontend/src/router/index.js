@@ -2,10 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import NotionDataViewer from '@/views/NotionParentView.vue'
 
 import GlossaryParentView from '@/views/GlossaryParentView.vue';
-import GlossaryChildView from '@/views/GlossaryChildView.vue'
+import GlossaryChildView from '@/views/GlossaryChildView.vue';
 import TypeParentView from '@/views/TypeParentView.vue';
 import TypeChildView from '@/views/TypeChildView.vue';
 import SubtypeParentView from '@/views/SubtypeParentView.vue';
+import AsaParentView from '@/views/AsaParentView.vue';
 
 import NotFoundView from '@/views/NotFoundView.vue';
 
@@ -31,6 +32,11 @@ const router = createRouter({
       path: '/subtipos',
       name: 'subtypeParent',
       component: SubtypeParentView,
+    },
+    {
+      path: '/asa',
+      name: 'asa',
+      component: AsaParentView,
     },
     {
       path: '/block/:block_id',
