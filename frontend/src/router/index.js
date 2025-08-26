@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NotionDataViewer from '@/views/NotionParentView.vue'
-import NotionChildView from '@/views/NotionChildView.vue'
 
-import GlossaryView from '@/views/GlossaryView.vue';
-import NotFoundView from '@/views/NotFoundView.vue';
+import GlossaryParentView from '@/views/GlossaryParentView.vue';
+import GlossaryChildView from '@/views/GlossaryChildView.vue'
 import TypeParentView from '@/views/TypeParentView.vue';
 import TypeChildView from '@/views/TypeChildView.vue';
 
@@ -18,7 +17,7 @@ const router = createRouter({
     {
       path: '/glossario',
       name: 'glossary',
-      component: GlossaryView,
+      component: GlossaryParentView,
     },
     {
       path: '/tipos',
@@ -28,7 +27,7 @@ const router = createRouter({
     {
       path: '/block/:block_id',
       name: 'block',
-      component: NotionChildView,
+      component: GlossaryChildView,
     },
     {
       path: '/page/:page_id',

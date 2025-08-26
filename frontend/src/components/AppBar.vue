@@ -47,7 +47,7 @@ watch(group, () => {
       </v-list-item>
       <v-list-item>
         <v-btn variant="text" block to="/glossario" class="justify-start">
-          <span>Categoria de Subtipos</span>
+          <span>Glossario</span>
         </v-btn>
       </v-list-item>
     </v-list>
