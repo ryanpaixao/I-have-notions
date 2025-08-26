@@ -23,8 +23,8 @@ onMounted(async () => {
   try {
     const response = await axios.get(`${baseUri.value}/api/page/${pageId}`);
 
-    // state.pageTitle = response.data?.title;
-    state.sections = response.data;
+    state.pageTitle = response.data?.pageTitle;
+    state.sections = response.data?.sections;
   } catch (error) {
     console.error('Error fetching Notion block data:', error);
     toast("Problem fetching data :(");

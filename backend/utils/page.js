@@ -1,16 +1,23 @@
 export const formatPageData = (data) => {
-  const formatedData = [];
+  const formatedRichText = [];
   const dataIsObject = data !== null && typeof data === 'object';
-
+  const pageTitle = dataIsObject && data.Nome?.title?.[0]?.plain_text;
+  console.log('data.Nome ==>>', data.Nome);
   if (dataIsObject) {
     Object.keys(data).forEach((key) => {
-      const hasRichText = data[key].rich_text && Array.isArray(data[key].rich_text);
+      // console.log('key ==>>', key);
+      const richText = data[key].rich_text
+      const hasRichText = richText && Array.isArray(richText);
 
-      if (hasRichText) {
-        formatedData.push([key, data[key].rich_text[0].plain_text]);
-      }
+      hasRichText && richText.forEach(text => {
+        // console.log(`${key} ==>>`, data[key])
+        text.plain_text && formatedRichText.push([key, text.plain_text]);
+      });
     });
   }
 
-  return formatedData;
+  return {
+    pageTitle,
+    sections: formatedRichText
+  };
 };
