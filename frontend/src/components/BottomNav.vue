@@ -18,15 +18,15 @@ const goForward = () => {
 </script>
 
 <template>
-  <v-bottom-navigation grow>
+  <v-bottom-navigation fixed app>
     <v-btn value="back" @click="goBack">
-      <VIcon>mdi-arrow-left-circle</VIcon>
+      <v-icon>mdi-arrow-left-circle</v-icon>
     </v-btn>
     <v-btn value="home" to="/">
-      <VIcon icon="mdi-home" />
+      <v-icon icon="mdi-home" />
     </v-btn>
     <v-btn value="forward" @click="goForward">
-      <VIcon>mdi-arrow-right-circle</VIcon>
+      <v-icon>mdi-arrow-right-circle</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>

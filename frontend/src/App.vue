@@ -6,14 +6,12 @@ import BottomNav from './components/BottomNav.vue';
 
 <template>
   <v-app>
-    <v-main>
+    <v-layout class="rounded rounded-md border">
       <AppBar />
-      <v-row class="w-100" align="stretch">
-        <v-col cols="12">
-          <RouterView />
-        </v-col>
-      </v-row>
-    </v-main>
+      <v-main class="d-flex justify-center">
+        <RouterView />
+      </v-main>
+    </v-layout>
     <BottomNav />
   </v-app>
 </template>
