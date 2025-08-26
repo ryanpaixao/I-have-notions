@@ -8,25 +8,6 @@ watch(group, () => {
   drawer.value = false;
 });
 
-// const items = [
-//   {
-//     title: 'Foo',
-//     value: "<v-btn>blah</v-btn>",
-//   },
-//   {
-//     title: 'Bar',
-//     value: 'bar',
-//   },
-//   {
-//     title: 'Fizz',
-//     value: 'fizz',
-//   },
-//   {
-//     title: 'Buzz',
-//     value: 'buzz',
-//   },
-// ]
-
 </script>
 
 <template>
@@ -34,11 +15,14 @@ watch(group, () => {
     <template v-slot:prepend>
       <v-app-bar-nav-icon icon="mdi-menu" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </template>
-    <VAppBarTitle>
-      <v-btn variant="plain" block to="/" class="justify-start">
+    <v-app-bar-title>
+      <v-btn variant="plain" to="/" class="justify-start">
         <span>Eneagrama</span>
       </v-btn>
-    </VAppBarTitle>
+    </v-app-bar-title>
+    <v-app-bar-nav-icon to="https://www.notion.com">
+      <img alt="Notion logo" class="logo m-4" src="@/assets/notion_icon.svg" width="48" height="48" />
+    </v-app-bar-nav-icon>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer" :location="$vuetify.display.mobile ? 'top' : undefined" temporary>
     <v-list>

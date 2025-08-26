@@ -8,13 +8,6 @@ import BottomNav from './components/BottomNav.vue';
   <v-app>
     <v-main>
       <AppBar />
-      <v-row class="justify-center">
-        <v-col cols="12" class="justify-center">
-          <header>
-            <img alt="Notion logo" class="logo" src="@/assets/notion_icon.svg" width="125" height="125" />
-          </header>
-        </v-col>
-      </v-row>
       <v-row class="w-100" align="stretch">
         <v-col cols="12">
           <RouterView />
