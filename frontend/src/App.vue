@@ -1,11 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router';
+import AppBar from './components/AppBar.vue';
 import BottomNav from './components/BottomNav.vue';
 </script>
 
 <template>
   <v-app>
     <v-main>
+      <AppBar />
       <v-row class="justify-center">
         <v-col cols="12" class="justify-center">
           <header>
