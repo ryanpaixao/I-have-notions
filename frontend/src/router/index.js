@@ -16,12 +16,12 @@ const router = createRouter({
       component: NotionDataViewer,
     },
     {
-      path: '/glossary',
+      path: '/glossario',
       name: 'glossary',
       component: GlossaryView,
     },
     {
-      path: '/type',
+      path: '/tipos',
       name: 'typeParent',
       component: TypeParentView,
     },
