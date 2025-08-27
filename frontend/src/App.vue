@@ -11,8 +11,8 @@ import BottomNav from './components/BottomNav.vue';
       <v-main class="d-flex justify-center mt-7">
         <RouterView />
       </v-main>
+      <BottomNav />
     </v-layout>
-    <BottomNav />
   </v-app>
 </template>
 
