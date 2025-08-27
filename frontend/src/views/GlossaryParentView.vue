@@ -41,7 +41,7 @@ onMounted(async () => {
       <div v-else>
         <div v-for="page in state.notionData" :key="page.id" class="page-card">
           <h2>
-            <RouterLink :to="`/block/${page.id}`">
+            <RouterLink :to="`/page/${page.id}`">
               {{ page.title || 'Untitled' }}
             </RouterLink>
           </h2>

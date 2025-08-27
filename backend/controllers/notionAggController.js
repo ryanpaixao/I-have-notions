@@ -16,7 +16,7 @@ export const getAggData = async (req, res) => {
 
     const formatedData = {
       page: formatedPageData,
-      block: formatedBlockData,
+      blocks: formatedBlockData,
     };
 
     res.status(200).json(formatedData);

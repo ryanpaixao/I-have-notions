@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NotionDataViewer from '@/views/NotionParentView.vue'
 
-import GlossaryParentView from '@/views/GlossaryParentView.vue';
-import GlossaryChildView from '@/views/GlossaryChildView.vue';
-import TypeParentView from '@/views/TypeParentView.vue';
-import TypeChildView from '@/views/TypeChildView.vue';
-import SubtypeParentView from '@/views/SubtypeParentView.vue';
 import AsaParentView from '@/views/AsaParentView.vue';
+import GlossaryParentView from '@/views/GlossaryParentView.vue';
+import SubtypeParentView from '@/views/SubtypeParentView.vue';
+import TypeParentView from '@/views/TypeParentView.vue';
+import ChildPageView from '@/views/ChildPageView.vue';
 
 import NotFoundView from '@/views/NotFoundView.vue';
 
@@ -39,14 +38,9 @@ const router = createRouter({
       component: AsaParentView,
     },
     {
-      path: '/block/:block_id',
-      name: 'block',
-      component: GlossaryChildView,
-    },
-    {
       path: '/page/:page_id',
       name: 'page',
-      component: TypeChildView,
+      component: ChildPageView,
     },
     {
       path: '/:catchAll(.*)',

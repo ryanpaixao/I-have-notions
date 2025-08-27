@@ -7,23 +7,26 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 // Components
+import NotionPageSection from '@/components/NotionPageSection.vue';
 import NotionBlock from '@/components/NotionBlock.vue';
 
 const route = useRoute();
-const blockId = route.params.block_id;
+const pageId = route.params.page_id;
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
 
 const state = reactive({
   pageTitle: "",
+  sections: [],
   blocks: [],
   isLoading: true
 });
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}/api/block/${blockId}`);
+    const response = await axios.get(`${baseUri.value}/api/agg/${pageId}`);
 
-    state.pageTitle = response.data?.title;
+    state.pageTitle = response.data?.page?.pageTitle;
+    state.sections = response.data?.page?.sections;
     state.blocks = response.data?.blocks;
   } catch (error) {
     console.error('Error fetching Notion block data:', error);
@@ -34,20 +37,21 @@ onMounted(async () => {
 });
 </script>
 
-<template>
-  <section>
-    <div class="mb-14">
-      <h2 class="text-center mb-7">
-        {{ state.pageTitle }}
-      </h2>
-      <div v-if="state.isLoading" class="text-center">
-        <PulseLoader />
+<template class="w-100">
+  <div class="mb-14 w-100">
+    <h2 class="text-center mb-7">
+      {{ state.pageTitle }}
+    </h2>
+    <div v-if="state.isLoading" class="text-center">
+      <PulseLoader />
+    </div>
+    <div v-else class="w-100">
+      <div v-for="(section, index) in state.sections" :key="index">
+        <NotionPageSection :section="section" />
       </div>
-      <div v-else class="">
-        <div v-for="(block, index) in state.blocks" :key="index">
-          <NotionBlock :block="block" />
-        </div>
+      <div v-for="(block, index) in state.blocks" :key="index">
+        <NotionBlock :block="block" />
       </div>
     </div>
-  </section>
+  </div>
 </template>
