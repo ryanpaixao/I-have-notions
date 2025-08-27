@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="notion-container mb-14">
+    <div class="notion-link-list mb-14">
       <h1 class="text-center mb-7">Notion Content Viewer</h1>
       <div v-if="state.isLoading">
         <PulseLoader />

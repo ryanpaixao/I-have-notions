@@ -37,21 +37,39 @@ onMounted(async () => {
 });
 </script>
 
-<template class="w-100">
-  <div class="mb-14 w-100">
-    <h2 class="text-center mb-7">
+<template>
+  <v-sheet class="child-page-container">
+    <h2 class="text-center mt-4 mb-7">
       {{ state.pageTitle }}
     </h2>
     <div v-if="state.isLoading" class="text-center">
       <PulseLoader />
     </div>
-    <div v-else class="w-100">
-      <div v-for="(section, index) in state.sections" :key="index">
+    <div v-else>
+      <v-card v-for="(section, index) in state.sections" :key="index" class="notion-page notion-page-section">
         <NotionPageSection :section="section" />
-      </div>
-      <div v-for="(block, index) in state.blocks" :key="index">
+      </v-card>
+      <v-divider full-width></v-divider>
+      <div v-for="(block, index) in state.blocks" :key="index" class="notion-page notion-block">
         <NotionBlock :block="block" />
       </div>
     </div>
-  </div>
+  </v-sheet>
 </template>
+
+<style scoped>
+.child-page-container {
+  border-radius: 1%;
+  margin-bottom: 40px;
+  padding: 16px;
+}
+
+.notion-page-section {
+  margin: 21px 32px;
+  align-items: center;
+}
+
+.notion-block {
+  margin: 21px 56px;
+}
+</style>
