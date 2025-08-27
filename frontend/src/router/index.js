@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import NotionDataViewer from '@/views/NotionParentView.vue'
+import NotionDataViewer from '@/views/parent/NotionParentView.vue'
 
-import AsaParentView from '@/views/AsaParentView.vue';
-import GlossaryParentView from '@/views/GlossaryParentView.vue';
-import SubtypeParentView from '@/views/SubtypeParentView.vue';
-import TypeParentView from '@/views/TypeParentView.vue';
+import AsaParentView from '@/views/parent/AsaParentView.vue';
+import GlossaryParentView from '@/views/parent/GlossaryParentView.vue';
+import SubtypeParentView from '@/views/parent/SubtypeParentView.vue';
+import TypeParentView from '@/views/parent/TypeParentView.vue';
 import ChildPageView from '@/views/ChildPageView.vue';
 
 import NotFoundView from '@/views/NotFoundView.vue';

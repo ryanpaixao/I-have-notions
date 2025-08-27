@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="notion-link-list notion-parent">
+    <div class="notion-link-list">
       <h1 class="text-center mb-7">Tipos</h1>
       <div v-if="state.isLoading">
         <PulseLoader />
@@ -48,11 +48,3 @@ onMounted(async () => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.notion-parent {
-  min-width: 350px;
-  margin-bottom: 56px;
-  padding: 16px;
-}
-</style>
