@@ -8,7 +8,7 @@ import BottomNav from './components/BottomNav.vue';
   <v-app>
     <v-layout class="rounded rounded-md border">
       <AppBar />
-      <v-main class="d-flex justify-center">
+      <v-main class="d-flex justify-center mt-7">
         <v-sheet>
           <RouterView />
         </v-sheet>

@@ -51,14 +51,3 @@ onMounted(async () => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.page-card {
-  border: 1px solid #285826;
-  color: #277131;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background: rgb(63, 66, 64);
-}
-</style>
