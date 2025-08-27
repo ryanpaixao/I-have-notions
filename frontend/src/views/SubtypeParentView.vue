@@ -9,8 +9,6 @@ import 'vue3-toastify/dist/index.css';
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID);
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
 
-const formatDate = (dateString) => new Date(dateString).toLocaleDateString();
-
 const state = reactive({
   notionData: [],
   isLoading: true,
@@ -34,7 +32,7 @@ onMounted(async () => {
 <template>
   <section>
     <div class="notion-link-list mb-14">
-      <h1 class="text-center mb-7">Subtipo</h1>
+      <h1 class="text-center mb-7">Subtipos</h1>
       <div v-if="state.isLoading">
         <PulseLoader />
       </div>
@@ -45,7 +43,6 @@ onMounted(async () => {
               {{ page.title || 'Untitled' }}
             </RouterLink>
           </h2>
-          <p>Created: {{ formatDate(page.created) }}</p>
         </div>
       </div>
     </div>

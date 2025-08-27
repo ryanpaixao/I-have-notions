@@ -32,7 +32,7 @@ onMounted(async () => {
 <template>
   <section>
     <div class="notion-link-list mb-14">
-      <h1 class="text-center mb-7">Asa</h1>
+      <h1 class="text-center mb-7">Asas</h1>
       <div v-if="state.isLoading">
         <PulseLoader />
       </div>
