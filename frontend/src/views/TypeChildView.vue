@@ -14,7 +14,7 @@ const pageId = route.params.page_id;
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
 
 const state = reactive({
-  pageTitle: "", // TODO: auto populate me!!
+  pageTitle: "",
   sections: [],
   isLoading: true
 });
