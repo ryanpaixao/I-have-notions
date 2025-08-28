@@ -20,7 +20,7 @@ watch(group, () => {
         <span>Eneagrama</span>
       </v-btn>
     </v-app-bar-title>
-    <v-app-bar-nav-icon to="https://www.notion.com">
+    <v-app-bar-nav-icon to="https://www.notion.com" class="mr-5">
       <img alt="Notion logo" class="logo m-4" src="@/assets/notion_icon.svg" width="48" height="48" />
     </v-app-bar-nav-icon>
   </v-app-bar>
