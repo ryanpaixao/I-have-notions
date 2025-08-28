@@ -1,24 +1,25 @@
 <script setup>
 import { ref, onMounted, reactive } from 'vue';
-import { RouterLink } from 'vue-router';
 import axios from 'axios';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
+import enneagramImage from '../assets/enneagram.svg';
+
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID); // TODO: Replace me!!)
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
-
-const formatDate = (dateString) => new Date(dateString).toLocaleDateString();
 
 const state = reactive({
   notionData: [],
   isLoading: true
 });
 
+const query = "Hierarquia=Tipo";
+
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}/api/data/query-data/${databaseId.value}`);
+    const response = await axios.get(`${baseUri.value}/api/data/query-data/${databaseId.value}?${query}`);
     state.notionData = response.data.sort((a, b) => a.title >= b.title);
   } catch (error) {
     console.error('Error fetching Notion query data:', error);
@@ -31,21 +32,28 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="notion-link-list mb-14">
-      <h1 class="text-center mb-7">Notion Content Viewer</h1>
-      <div v-if="state.isLoading">
-        <PulseLoader />
-      </div>
-      <div v-else>
-        <div v-for="page in state.notionData" :key="page.id" class="page-card">
-          <h2>
-            <RouterLink :to="`/block/${page.id}`">
-              {{ page.title || 'Untitled' }}
-            </RouterLink>
-          </h2>
-          <p>Created: {{ formatDate(page.created) }}</p>
+    <div class="home-view-container">
+      <v-col>
+        <div v-if="state.isLoading">
+          <PulseLoader />
         </div>
-      </div>
+        <div v-else class="home-image-container">
+          <v-img width="300px" aspect-ratio="16/9" cover :src="enneagramImage" />
+        </div>
+      </v-col>
     </div>
   </section>
 </template>
+
+<style scoped>
+.home-view-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-image-container {
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+}
+</style>

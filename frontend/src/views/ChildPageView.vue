@@ -62,6 +62,10 @@ onMounted(async () => {
   border-radius: 1%;
   margin-bottom: 40px;
   padding: 16px;
+
+  @media (min-width: 992px) {
+    min-width: 800px;
+  }
 }
 
 .notion-page-section {
