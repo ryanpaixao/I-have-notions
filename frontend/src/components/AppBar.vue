@@ -43,7 +43,7 @@ watch(group, () => {
       </v-list-item>
       <v-list-item>
         <v-btn variant="text" block to="/asa" class="justify-start">
-          <span>Asa</span>
+          <span>Asas</span>
         </v-btn>
       </v-list-item>
     </v-list>

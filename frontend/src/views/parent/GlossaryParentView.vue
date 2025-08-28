@@ -1,20 +1,21 @@
 <script setup>
 import { ref, onMounted, reactive } from 'vue';
-import { RouterLink } from 'vue-router';
 import axios from 'axios';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+
+import ParentLinksList from '@/components/ParentLinksList.vue';
 
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID);
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
 
 const state = reactive({
   notionData: [],
-  isLoading: true
+  isLoading: true,
 });
 
 const query = "Hierarquia=Categoria%20de%20Subtipos";
+const pageTitle = "Glossario"
 
 onMounted(async () => {
   try {
@@ -30,21 +31,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section>
-    <div class="notion-link-list mb-14">
-      <h1 class="text-center mb-7">Glossario</h1>
-      <div v-if="state.isLoading">
-        <PulseLoader />
-      </div>
-      <div v-else>
-        <div v-for="page in state.notionData" :key="page.id" class="page-card">
-          <h2>
-            <RouterLink :to="`/page/${page.id}`">
-              {{ page.title || 'Untitled' }}
-            </RouterLink>
-          </h2>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ParentLinksList :pageTitle="pageTitle" :isLoading="state.isLoading" :notionData="state.notionData" />
 </template>
