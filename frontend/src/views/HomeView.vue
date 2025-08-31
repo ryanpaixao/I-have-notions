@@ -5,7 +5,8 @@ import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-import enneagramImage from '../assets/enneagram.svg';
+import enneagramLight from '../assets/enneagram-light.svg';
+import enneagramDark from '../assets/enneagram-dark.svg';
 
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID); // TODO: Replace me!!)
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
@@ -38,7 +39,7 @@ onMounted(async () => {
           <PulseLoader />
         </div>
         <div v-else class="home-image-container">
-          <v-img width="300px" aspect-ratio="16/9" cover :src="enneagramImage" />
+          <v-img width="300px" aspect-ratio="16/9" cover :src="$vuetify.theme.dark ? enneagramLight : enneagramDark" />
         </div>
       </v-col>
     </div>
