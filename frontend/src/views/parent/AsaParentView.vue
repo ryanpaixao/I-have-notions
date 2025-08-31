@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-import ParentLinksList from '@/components/ParentLinksList.vue';
+import ParentLinksListByType from '@/components/ParentLinksListByType.vue';
 
 const databaseId = ref(import.meta.env.VITE_DATABASE_ID);
 const baseUri = ref(import.meta.env.VITE_BASE_URI);
@@ -20,7 +20,7 @@ const pageTitle = "Asas";
 onMounted(async () => {
   try {
     const response = await axios.get(`${baseUri.value}/api/data/query-data/${databaseId.value}?${query}`);
-    state.notionData = response.data.sort((a, b) => a.title >= b.title);
+    state.notionData = response.data;
   } catch (error) {
     console.error('Error fetching Notion query data:', error);
     toast("Problem fetching data :(");
@@ -31,5 +31,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ParentLinksList :pageTitle="pageTitle" :isLoading="state.isLoading" :notionData="state.notionData" />
+  <ParentLinksListByType :pageTitle="pageTitle" :isLoading="state.isLoading" :notionData="state.notionData" />
 </template>

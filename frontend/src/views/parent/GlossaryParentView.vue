@@ -19,8 +19,8 @@ const pageTitle = "Glossario"
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseUri.value}/api/data/query-data/${databaseId.value}?${query}`);
-    state.notionData = response.data.sort((a, b) => a.title >= b.title);
+    const response = await axios.get(`${baseUri.value}/api/data/query-glossary/${databaseId.value}?${query}`);
+    state.notionData = response.data;
   } catch (error) {
     console.error('Error fetching Notion query data:', error);
     toast("Problem fetching data :(");
